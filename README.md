@@ -1,3 +1,10 @@
+# ATTENTION
+This fork been customized to work with DualShock 4 controllers and might not work with other gamepads.
+See the [main project by ROMthesheep](https://github.com/ROMthesheep/Arcade-Bongo-Cat) if your gamepad doesn't work with this version.
+
+(Below is the original README file)
+
+___
 Right now there are two distinct versions of this software, one focused on hitboxes/switch based sticks and two axis sticks and one focused on single axis fight sticks like the razor panthera and the victrix
 
 To download each one you must seek them in the [releases page](https://github.com/ROMthesheep/Arcade-Bongo-Cat/releases)
