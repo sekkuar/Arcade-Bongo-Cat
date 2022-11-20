@@ -20,8 +20,8 @@
  */
 //valores de hardware:
 //mano derecha: //right hand:
-// posicion del boton en la hitbox = codigo del boton en esa posicion dado por https://html5gamepad.com/codes
-// buton position on the hitbox = button code of that position from https://html5gamepad.com/codes
+// posicion del boton en la hitbox = codigo del boton en esa posicion dado por https://html5gamepad.com/
+// buton position on the hitbox = button code of that position from https://html5gamepad.com/
 
 var vb1 = 4;
 var vb2 = 2;
@@ -237,23 +237,103 @@ function gameLoop() {
   var gp = gamepads[0];
   if (
     vuelta &&
-    buttonPressed(gp.buttons[vb4]) && // R1
+    buttonPressed(gp.buttons[vb2]) && // square
     !(
-      buttonPressed(gp.buttons[vb2]) &&
-      buttonPressed(gp.buttons[vb3]) &&
       buttonPressed(gp.buttons[vb1]) &&
+      buttonPressed(gp.buttons[vb3]) &&
+      buttonPressed(gp.buttons[vb4]) &&
       buttonPressed(gp.buttons[vb5]) &&
       buttonPressed(gp.buttons[vb6]) &&
       buttonPressed(gp.buttons[vb7]) &&
       buttonPressed(gp.buttons[vb8])
     )
   ) {
-    boton4.classList.remove("invisible");
-    brazod = 4;
-    console.log("boton 3");
+    boton2.classList.remove("invisible");
+    brazod = 2;
+    console.log("boton 1");
     vuelta = false;
   } else {
-    boton4.classList.add("invisible");
+    boton2.classList.add("invisible");
+  }
+  if (
+    vuelta &&
+    buttonPressed(gp.buttons[vb3]) && // cross
+    !(
+      buttonPressed(gp.buttons[vb2]) &&
+      buttonPressed(gp.buttons[vb1]) &&
+      buttonPressed(gp.buttons[vb4]) &&
+      buttonPressed(gp.buttons[vb5]) &&
+      buttonPressed(gp.buttons[vb6]) &&
+      buttonPressed(gp.buttons[vb7]) &&
+      buttonPressed(gp.buttons[vb8])
+    )
+  ) {
+    boton3.classList.remove("invisible");
+    brazod = 3;
+    console.log("boton 2");
+    vuelta = false;
+  } else {
+    boton3.classList.add("invisible");
+  }
+  if (
+    vuelta &&
+    buttonPressed(gp.buttons[vb6]) && // triangle
+    !(
+      buttonPressed(gp.buttons[vb2]) &&
+      buttonPressed(gp.buttons[vb3]) &&
+      buttonPressed(gp.buttons[vb4]) &&
+      buttonPressed(gp.buttons[vb5]) &&
+      buttonPressed(gp.buttons[vb1]) &&
+      buttonPressed(gp.buttons[vb7]) &&
+      buttonPressed(gp.buttons[vb8])
+    )
+  ) {
+    boton6.classList.remove("invisible");
+    brazod = 6;
+    console.log("boton 5");
+    vuelta = false;
+  } else {
+    boton6.classList.add("invisible");
+  }
+  if (
+    vuelta &&
+    buttonPressed(gp.buttons[vb7]) && // circle
+    !(
+      buttonPressed(gp.buttons[vb1]) &&
+      buttonPressed(gp.buttons[vb2]) &&
+      buttonPressed(gp.buttons[vb3]) &&
+      buttonPressed(gp.buttons[vb4]) &&
+      buttonPressed(gp.buttons[vb5]) &&
+      buttonPressed(gp.buttons[vb7]) &&
+      buttonPressed(gp.buttons[vb8])
+    )
+  ) {
+    boton7.classList.remove("invisible");
+    brazod = 7;
+    console.log("boton 6");
+    vuelta = false;
+  } else {
+    boton7.classList.add("invisible");
+  }
+  if (
+    vuelta &&
+    buttonPressed(gp.buttons[vb8]) && // R2
+    !(
+      buttonPressed(gp.buttons[vb1]) &&
+      buttonPressed(gp.buttons[vb2]) &&
+      buttonPressed(gp.buttons[vb3]) &&
+      buttonPressed(gp.buttons[vb4]) &&
+      buttonPressed(gp.buttons[vb5]) &&
+      buttonPressed(gp.buttons[vb6]) &&
+      buttonPressed(gp.buttons[vb7])
+    )
+  ) {
+    boton8.classList.remove("invisible");
+    brazod = 8;
+    console.log("boton 7");
+    vuelta = false;
+  } else {
+    boton8.classList.add("invisible");
   }
   if (
     vuelta &&
@@ -275,66 +355,25 @@ function gameLoop() {
   } else {
     boton1.classList.add("invisible");
   }
-
   if (
     vuelta &&
-    buttonPressed(gp.buttons[vb2]) &&
+    buttonPressed(gp.buttons[vb4]) && // R1
     !(
-      buttonPressed(gp.buttons[vb1]) &&
+      buttonPressed(gp.buttons[vb2]) &&
       buttonPressed(gp.buttons[vb3]) &&
-      buttonPressed(gp.buttons[vb4]) &&
+      buttonPressed(gp.buttons[vb1]) &&
       buttonPressed(gp.buttons[vb5]) &&
       buttonPressed(gp.buttons[vb6]) &&
       buttonPressed(gp.buttons[vb7]) &&
       buttonPressed(gp.buttons[vb8])
     )
   ) {
-    boton2.classList.remove("invisible");
-    brazod = 2;
-    console.log("boton 1");
+    boton4.classList.remove("invisible");
+    brazod = 4;
+    console.log("boton 3");
     vuelta = false;
   } else {
-    boton2.classList.add("invisible");
-  }
-  if (
-    vuelta &&
-    buttonPressed(gp.buttons[vb3]) &&
-    !(
-      buttonPressed(gp.buttons[vb2]) &&
-      buttonPressed(gp.buttons[vb1]) &&
-      buttonPressed(gp.buttons[vb4]) &&
-      buttonPressed(gp.buttons[vb5]) &&
-      buttonPressed(gp.buttons[vb6]) &&
-      buttonPressed(gp.buttons[vb7]) &&
-      buttonPressed(gp.buttons[vb8])
-    )
-  ) {
-    boton3.classList.remove("invisible");
-    brazod = 3;
-    console.log("boton 2");
-    vuelta = false;
-  } else {
-    boton3.classList.add("invisible");
-  }
-  if (
-    vuelta &&
-    buttonPressed(gp.buttons[vb8]) && // R2
-    !(
-      buttonPressed(gp.buttons[vb1]) &&
-      buttonPressed(gp.buttons[vb2]) &&
-      buttonPressed(gp.buttons[vb3]) &&
-      buttonPressed(gp.buttons[vb4]) &&
-      buttonPressed(gp.buttons[vb5]) &&
-      buttonPressed(gp.buttons[vb6]) &&
-      buttonPressed(gp.buttons[vb7])
-    )
-  ) {
-    boton8.classList.remove("invisible");
-    brazod = 8;
-    console.log("boton 7");
-	vuelta = false;
-  } else {
-    boton8.classList.add("invisible");
+    boton4.classList.add("invisible");
   }
   if (
     vuelta &&
@@ -355,45 +394,6 @@ function gameLoop() {
     vuelta = false;
   } else {
     boton5.classList.add("invisible");
-  }
-  if (
-    vuelta &&
-    buttonPressed(gp.buttons[vb6]) &&
-    !(
-      buttonPressed(gp.buttons[vb2]) &&
-      buttonPressed(gp.buttons[vb3]) &&
-      buttonPressed(gp.buttons[vb4]) &&
-      buttonPressed(gp.buttons[vb5]) &&
-      buttonPressed(gp.buttons[vb1]) &&
-      buttonPressed(gp.buttons[vb7]) &&
-      buttonPressed(gp.buttons[vb8])
-    )
-  ) {
-    boton6.classList.remove("invisible");
-    brazod = 6;
-    console.log("boton 5");
-    vuelta = false;
-  } else {
-    boton6.classList.add("invisible");
-  }
-  if (
-    vuelta &&
-    buttonPressed(gp.buttons[vb7]) &&
-    !(
-      buttonPressed(gp.buttons[vb1]) &&
-      buttonPressed(gp.buttons[vb2]) &&
-      buttonPressed(gp.buttons[vb3]) &&
-      buttonPressed(gp.buttons[vb4]) &&
-      buttonPressed(gp.buttons[vb5]) &&
-      buttonPressed(gp.buttons[vb7]) &&
-      buttonPressed(gp.buttons[vb8])
-    )
-  ) {
-    boton7.classList.remove("invisible");
-    brazod = 7;
-    console.log("boton 6");
-  } else {
-    boton7.classList.add("invisible");
   }
   if (
     //vuelta &&
