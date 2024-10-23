@@ -56,12 +56,9 @@ var nEjeY = 1;
 var invertX = 1;
 var invertY = -1;
 
-
-
-
-
-
-
+// Change these values to force mouth close after talking for number of frames
+var maxFramesMouthOpen = 15;
+var maxFramesBeforeOpenMouth = 20;
 
 
 //Logica y animaciones
@@ -149,6 +146,9 @@ var br8 = document.getElementById("bracito8");
 var brazod = 0;
 var brazoi = 0;
 
+var isVoiceActivated = false;
+var talkCount = 0;
+
 var rAF =
   window.mozRequestAnimationFrame ||
   window.webkitRequestAnimationFrame ||
@@ -178,6 +178,10 @@ window.addEventListener("gamepadconnected", function () {
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function setVoiceActivated(voice) {
+	isVoiceActivated = voice;
 }
 
 window.addEventListener("gamepaddisconnected", function () {
@@ -232,8 +236,35 @@ function gameLoop() {
     : navigator.webkitGetGamepads
     ? navigator.webkitGetGamepads
     : [];
-  if (!gamepads) return;
+    
+	talkCount++;
+	if(isVoiceActivated){
+		if(talkCount <= maxFramesMouthOpen){
+			var cat = document.getElementById("fondoStick");
+			cat.classList.add("invisible");
+			var catLike = document.getElementById("stickLike");
+			catLike.classList.remove("invisible");
+			console.log("voice activated");
+		} else {
+			var cat = document.getElementById("fondoStick");
+			cat.classList.remove("invisible");
+			var catLike = document.getElementById("stickLike");
+			catLike.classList.add("invisible");
+		}
+	} else {
+		var cat = document.getElementById("fondoStick");
+		cat.classList.remove("invisible");
+		var catLike = document.getElementById("stickLike");
+		catLike.classList.add("invisible");
+		talkCount = 0;
+	}
+	
+	if(talkCount == maxFramesBeforeOpenMouth){
+	  talkCount = 0;
+	}
 
+  if (!gamepads) return;
+  
   var gp = gamepads[0];
   if (
     vuelta &&

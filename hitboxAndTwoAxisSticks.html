@@ -16,6 +16,9 @@
   <div id="fondoStick" class="invisible">
     <img src="gato/img/stick/bg.png" alt="" srcset="">
   </div>
+  <div id="stickLike" class="invisible">
+    <img src="gato/img/stick/bg_talk.png" alt="" srcset="">
+  </div>
   
   <div id="boton1" class="invisible">
     <img src="gato/img/mania/7K/boton1.png" alt="" srcset="">
@@ -115,5 +118,24 @@
 </body>
 
 <script src="hitboxYStickDeDosEjes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/ort.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.19/dist/bundle.min.js"></script>
+<script>
+  async function main() {
+    const myvad = await vad.MicVAD.new({
+      positiveSpeechThreshold:.4,negativeSpeechThreshold:.39,preSpeechPadFrames:0,redemptionFrames:0,frameSamples:1536,minSpeechFrames:0,submitUserSpeechOnPause:!1,
+      onSpeechStart: () => {
+        console.log("Speech start detected");
+		setVoiceActivated(true);
+      },
+      onSpeechEnd: (audio) => {
+        setVoiceActivated(false);
+		console.log("Speech end detected");
+      }
+    })
+    myvad.start()
+  }
+  main()
+</script>
 
 </html>
